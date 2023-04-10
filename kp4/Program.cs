@@ -1,4 +1,5 @@
-﻿using MathNet.Numerics.LinearAlgebra;
+﻿using kp4;
+using MathNet.Numerics.LinearAlgebra;
 Matrix<double> A15 = Matrix<double>.Build.DenseOfArray(new double[,]{
     {5.452, 0.401, 0.758,0.123},
     {0.785, 2.654, 0.687,0.203},
@@ -27,64 +28,27 @@ Matrix<double> A24 = Matrix<double>.Build.DenseOfArray(new double[,]{
     {0.438,0.326,0.483,4.229}
 });
 Vector<double> B24 = Vector<double>.Build.Dense(new double[] { 0.454,0.371,0.465,0.822 });
-Console.WriteLine(JacobiMethod(B15, A15).ToString());
-Console.WriteLine(JacobiMethod(B16, A16).ToString());
-Console.WriteLine(JacobiMethod(B23, A23).ToString());
-Console.WriteLine(JacobiMethod(B24, A24).ToString());
-Console.WriteLine(GausMethod(B15, A15).ToString());
-Console.WriteLine(GausMethod(B16, A16).ToString());
-Console.WriteLine(GausMethod(B23, A23).ToString());
-Console.WriteLine(GausMethod(B24, A24).ToString());
+SLAR slar15 = new SLAR(A15,B15);
+SLAR slar16 = new SLAR(A16, B16);
+SLAR slar23 = new SLAR(A23,B23);
+SLAR slar24 = new SLAR(A24,B24);
+slar15.JacobiMethod();
+slar16.JacobiMethod();
+slar23.JacobiMethod();
+slar24.JacobiMethod();
+Console.WriteLine($"{slar16.answers.ToString()}\n Кількість ітерацій:{slar15.count}\n Похибки на 3 ітераціїї: \n{slar15.ThirdIterations}");
+Console.WriteLine($"{slar16.answers.ToString()}\n Кількість ітерацій:{slar16.count}\n Похибки на 3 ітераціїї: \n{slar16.ThirdIterations}");
+Console.WriteLine($"{slar23.answers.ToString()}\n Кількість ітерацій:{slar23.count}\n Похибки на 3 ітераціїї: \n{slar23.ThirdIterations}");
+Console.WriteLine($"{slar24.answers.ToString()}\n Кількість ітерацій:{slar24.count}\n Похибки на 3 ітераціїї: \n{slar24.ThirdIterations}");
+slar15.GausMethod();
+slar16.GausMethod();
+slar23.GausMethod();
+slar24.GausMethod();
+Console.WriteLine($"{slar16.answers.ToString()}\n Кількість ітерацій:{slar15.count}\n Похибки на 3 ітераціїї: \n{slar15.ThirdIterations}");
+Console.WriteLine($"{slar16.answers.ToString()}\n Кількість ітерацій:{slar16.count}\n Похибки на 3 ітераціїї: \n{slar16.ThirdIterations}");
+Console.WriteLine($"{slar23.answers.ToString()}\n Кількість ітерацій:{slar23.count}\n Похибки на 3 ітераціїї: \n{slar23.ThirdIterations}");
+Console.WriteLine($"{slar24.answers.ToString()}\n Кількість ітерацій:{slar24.count}\n Похибки на 3 ітераціїї: \n{slar24.ThirdIterations}");
 
-Vector<double> JacobiMethod(Vector<double> vector, Matrix<double> matrix)
-{    
-    double X0 = 0;
-    double X_1 = X0, X_2 = X0, X_3 = X0, X_4 = X0;
-    double XLast_1, XLast_2, XLast_3, XLast_4;
-    double dx = double.MaxValue;
-    double epsilon = 0.001;
-    double count = 0;    
-    while (Math.Abs(dx) > epsilon)
-    {        
-        XLast_1 = X_1;
-        XLast_2 = X_2;
-        XLast_3 = X_3;
-        XLast_4 = X_4;
-        X_1 = (1 / matrix[0, 0]) * (vector[0] - matrix[0, 1] * XLast_2 - matrix[0, 2] * XLast_3 - matrix[0, 3] * XLast_4);
-        X_2 = (1 / matrix[1, 1]) * (vector[1] - matrix[1, 0] * XLast_1 - matrix[1, 2] * XLast_3 - matrix[1, 3] * XLast_4);
-        X_3 = (1 / matrix[2, 2]) * (vector[2] - matrix[2, 0] * XLast_1 - matrix[2, 1] * XLast_2 - matrix[2, 3] * XLast_4);
-        X_4 = (1 / matrix[3, 3]) * (vector[3] - matrix[3, 0] * XLast_1 - matrix[3, 1] * XLast_2 - matrix[3, 2] * XLast_3);
-       double[] result =  { X_1-XLast_1, X_2-XLast_2, X_3-XLast_3, X_4-XLast_4};
-        double max = result.Max();
-        dx = max;
-        count++;      
-    }
 
-    return Vector<double>.Build.Dense(new double[] { X_1, X_2, X_3, X_4, count });
-}
-Vector<double> GausMethod(Vector<double> vector, Matrix<double> matrix)
-{
-    double X0 = 0;
-    double X_1 = X0, X_2 = X0, X_3 = X0, X_4 = X0;
-    double XLast_1, XLast_2, XLast_3, XLast_4;
-    double dx = double.MaxValue;
-    double epsilon = 0.001;
-    double count = 0;
-    while (Math.Abs(dx) > epsilon)
-    {
-        XLast_1 = X_1;
-        XLast_2 = X_2;
-        XLast_3 = X_3;
-        XLast_4 = X_4;
-        X_1 = (1 / matrix[0, 0]) * (vector[0] - matrix[0, 1] * XLast_2 - matrix[0, 2] * XLast_3 - matrix[0, 3] * XLast_4);
-        X_2 = (1 / matrix[1, 1]) * (vector[1] - matrix[1, 0] * X_1 - matrix[1, 2] * XLast_3 - matrix[1, 3] * XLast_4);
-        X_3 = (1 / matrix[2, 2]) * (vector[2] - matrix[2, 0] * X_1 - matrix[2, 1] * X_2 - matrix[2, 3] * XLast_4);
-        X_4 = (1 / matrix[3, 3]) * (vector[3] - matrix[3, 0] * X_1 - matrix[3, 1] * X_2 - matrix[3, 2] * X_3);
-        double[] result = { X_1 - XLast_1, X_2 - XLast_2, X_3 - XLast_3, X_4 - XLast_4 };
-        double max = result.Max();
-        dx = max;
-        count++;
-    }
 
-    return Vector<double>.Build.Dense(new double[] { X_1, X_2, X_3, X_4, count });
-}
+
