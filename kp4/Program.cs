@@ -36,19 +36,20 @@ slar15.JacobiMethod();
 slar16.JacobiMethod();
 slar23.JacobiMethod();
 slar24.JacobiMethod();
-Console.WriteLine($"{slar16.answers.ToString()}\n Кількість ітерацій:{slar15.count}\n Похибки на 3 ітераціїї: \n{slar15.ThirdIterations}");
-Console.WriteLine($"{slar16.answers.ToString()}\n Кількість ітерацій:{slar16.count}\n Похибки на 3 ітераціїї: \n{slar16.ThirdIterations}");
-Console.WriteLine($"{slar23.answers.ToString()}\n Кількість ітерацій:{slar23.count}\n Похибки на 3 ітераціїї: \n{slar23.ThirdIterations}");
-Console.WriteLine($"{slar24.answers.ToString()}\n Кількість ітерацій:{slar24.count}\n Похибки на 3 ітераціїї: \n{slar24.ThirdIterations}");
+Console.WriteLine($"{slar15.answers.ToString()}\n Кількість ітерацій:{slar15.count}\n Похибки на 3 ітераціїї: \n{slar15.ThirdIterations}\n Вектор нев'язки:\n{slar15.vectorR}");
+Console.WriteLine($"{slar16.answers.ToString()}\n Кількість ітерацій:{slar16.count}\n Похибки на 3 ітераціїї: \n{slar16.ThirdIterations}\n Вектор нев'язки:\n{slar16.vectorR}");
+Console.WriteLine($"{slar23.answers.ToString()}\n Кількість ітерацій:{slar23.count}\n Похибки на 3 ітераціїї: \n{slar23.ThirdIterations}\n Вектор нев'язки:\n{slar23.vectorR}");
+Console.WriteLine($"{slar24.answers.ToString()}\n Кількість ітерацій:{slar24.count}\n Похибки на 3 ітераціїї: \n{slar24.ThirdIterations}\n Вектор нев'язки:\n{slar24.vectorR}");
 slar15.GausMethod();
 slar16.GausMethod();
 slar23.GausMethod();
 slar24.GausMethod();
-Console.WriteLine($"{slar16.answers.ToString()}\n Кількість ітерацій:{slar15.count}\n Похибки на 3 ітераціїї: \n{slar15.ThirdIterations}");
-Console.WriteLine($"{slar16.answers.ToString()}\n Кількість ітерацій:{slar16.count}\n Похибки на 3 ітераціїї: \n{slar16.ThirdIterations}");
-Console.WriteLine($"{slar23.answers.ToString()}\n Кількість ітерацій:{slar23.count}\n Похибки на 3 ітераціїї: \n{slar23.ThirdIterations}");
-Console.WriteLine($"{slar24.answers.ToString()}\n Кількість ітерацій:{slar24.count}\n Похибки на 3 ітераціїї: \n{slar24.ThirdIterations}");
+Console.WriteLine($"{slar15.answers.ToString()}\n Кількість ітерацій:{slar15.count}\n Похибки на 3 ітераціїї: \n{slar15.ThirdIterations}\n Вектор нев'язки:\n{slar15.vectorR}");
+Console.WriteLine($"{slar16.answers.ToString()}\n Кількість ітерацій:{slar16.count}\n Похибки на 3 ітераціїї: \n{slar16.ThirdIterations}\n Вектор нев'язки:\n{slar16.vectorR}");
+Console.WriteLine($"{slar23.answers.ToString()}\n Кількість ітерацій:{slar23.count}\n Похибки на 3 ітераціїї: \n{slar23.ThirdIterations}\n Вектор нев'язки:\n{slar23.vectorR}");
+Console.WriteLine($"{slar24.answers.ToString()}\n Кількість ітерацій:{slar24.count}\n Похибки на 3 ітераціїї: \n{slar24.ThirdIterations}\n Вектор нев'язки:\n{slar24.vectorR}");
 
 
 
 
+ 

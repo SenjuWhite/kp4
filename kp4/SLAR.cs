@@ -13,6 +13,7 @@ namespace kp4
         public   Vector<double> ThirdIterations { get; set; }
         public Matrix<double> matrix { get; set; }
         public Vector<double> vector { get; set; }
+        public Vector<double> vectorR { get; set; } 
         public SLAR(Matrix<double> matrix, Vector<double> vector)
         {
             this.matrix = matrix;
@@ -48,6 +49,12 @@ namespace kp4
             }
             this.count = count;
             answers = Vector<double>.Build.Dense(new double[] { X_1, X_2, X_3, X_4 });
+            vectorR = Vector<double>.Build.Dense(new double[] {
+            (X_1*matrix[0,0]+X_2*matrix[0,1]+X_3*matrix[0,2]+X_4*matrix[0,3])-vector[0],
+            (X_1*matrix[1,0]+X_2*matrix[1,1]+X_3*matrix[1,2]+X_4*matrix[1,3])-vector[1],
+            (X_1*matrix[2,0]+X_2*matrix[2,1]+X_3*matrix[2,2]+X_4*matrix[2,3])-vector[2],
+            (X_1*matrix[3,0]+X_2*matrix[3,1]+X_3*matrix[3,2]+X_4*matrix[3,3])-vector[3],
+            });
 
             return this;
         }
@@ -80,6 +87,12 @@ namespace kp4
             }
             this.count = count;
           answers = Vector<double>.Build.Dense(new double[] { X_1, X_2, X_3, X_4 });
+            vectorR = Vector<double>.Build.Dense(new double[] {
+            (X_1*matrix[0,0]+X_2*matrix[0,1]+X_3*matrix[0,2]+X_4*matrix[0,3])-vector[0],
+            (X_1*matrix[1,0]+X_2*matrix[1,1]+X_3*matrix[1,2]+X_4*matrix[1,3])-vector[1],
+            (X_1*matrix[2,0]+X_2*matrix[2,1]+X_3*matrix[2,2]+X_4*matrix[2,3])-vector[2],
+            (X_1*matrix[3,0]+X_2*matrix[3,1]+X_3*matrix[3,2]+X_4*matrix[3,3])-vector[3],
+            });
             return this;
         }
 
